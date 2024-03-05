@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib-object.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_PACRUNNER_TYPE_DUKTAPE         (px_pacrunner_duktape_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_FINAL_TYPE (PxPacRunnerDuktape, px_pacrunner_duktape, PX, PACRUNNER_DUKTAPE, GObject)
 
 G_END_DECLS

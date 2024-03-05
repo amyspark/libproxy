@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_CONFIG_TYPE_ENV         (px_config_env_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_FINAL_TYPE (PxConfigEnv, px_config_env, PX, CONFIG_ENV, GObject)
 
 G_END_DECLS

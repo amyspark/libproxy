@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_CONFIG_TYPE_KDE         (px_config_kde_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_FINAL_TYPE (PxConfigKde, px_config_kde, PX, CONFIG_KDE, GObject)
 
 G_END_DECLS

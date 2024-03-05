@@ -110,6 +110,10 @@ curl_dep = dependency('libcurl', required: get_option('curl'))
 ws2_32_dep = cc.find_library('ws2_32', required : with_platform_windows)
 gsettings_desktop_schema = dependency('gsettings-desktop-schemas', required: get_option('config-gnome'))
 
+visibility_h = files(
+  'visibility.h.in',
+)
+
 subdir('src')
 subdir('tests')
 subdir('docs')

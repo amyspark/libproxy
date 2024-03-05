@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_CONFIG_TYPE_WINDOWS         (px_config_windows_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_FINAL_TYPE (PxConfigWindows, px_config_windows, PX, CONFIG_WINDOWS, GObject)
 
 G_END_DECLS

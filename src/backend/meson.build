@@ -27,7 +27,16 @@ px_backend_deps = [
 
 px_backend_c_args = [
   '-DG_LOG_DOMAIN="pxbackend"',
+  '-DPXMANAGER_EXPORTS',
 ]
+
+px_backend_visibility_header = configure_file(
+  input: visibility_h,
+  output: 'px-manager-visibility.h',
+  configuration: {
+    'TARGET': 'pxmanager'.to_upper(),
+  }
+)
 
 px_backend_inc = include_directories('.')
 
@@ -35,12 +44,13 @@ subdir('plugins')
 
 px_backend = shared_library(
   'pxbackend-@0@'.format(api_version),
-  px_backend_sources,
+  [px_backend_sources, px_backend_visibility_header],
   dependencies: px_backend_deps,
   c_args: px_backend_c_args,
   install: true,
   install_dir: pkglibdir,
-  install_rpath: pkglibdir
+  install_rpath: pkglibdir,
+  gnu_symbol_visibility: 'inlineshidden',
 )
 
 px_backend_dep = declare_dependency(

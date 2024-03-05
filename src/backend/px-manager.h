@@ -23,10 +23,13 @@
 
 #include <glib-object.h>
 
+#include "px-manager-visibility.h"
+
 G_BEGIN_DECLS
 
 #define PX_TYPE_MANAGER (px_manager_get_type())
 
+PXMANAGER_EXPORT
 G_DECLARE_FINAL_TYPE (PxManager, px_manager, PX, MANAGER, GObject)
 
 extern GQuark px_manager_error_quark (void);
@@ -36,22 +39,28 @@ typedef enum {
   PX_MANAGER_ERROR_UNKNOWN_METHOD = 1001,
 } PxManagerErrorCode;
 
-
+PXMANAGER_EXPORT
 PxManager *px_manager_new (void);
+PXMANAGER_EXPORT
 PxManager *px_manager_new_with_options (const char *optname1, ...);
 
+PXMANAGER_EXPORT
 char **px_manager_get_proxies_sync (PxManager   *self,
                                     const char  *url);
 
+PXMANAGER_EXPORT
 GBytes *px_manager_pac_download (PxManager  *self,
                                  const char *uri);
 
+PXMANAGER_EXPORT
 char **px_manager_get_configuration (PxManager  *self,
                                      GUri       *uri);
 
+PXMANAGER_EXPORT
 void px_strv_builder_add_proxy (GStrvBuilder *builder,
                                 const char   *value);
 
+PXMANAGER_EXPORT
 gboolean px_manager_is_ignore (GUri *uri, GStrv ignores);
 
 G_END_DECLS

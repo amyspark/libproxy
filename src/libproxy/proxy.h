@@ -24,6 +24,8 @@
 
 #include <glib-object.h>
 
+#include "visibility.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -48,8 +50,10 @@ typedef struct _pxProxyFactory pxProxyFactory;
  *
  * Returns: The newly created `pxProxyFactory`
  */
+LIBPROXY_EXPORT
 pxProxyFactory *px_proxy_factory_new (void);
 
+LIBPROXY_EXPORT
 GType           px_proxy_factory_get_type (void) G_GNUC_CONST;
 
 /**
@@ -116,6 +120,7 @@ GType           px_proxy_factory_get_type (void) G_GNUC_CONST;
  *
  * Returns: (transfer full): a list of proxies
  */
+LIBPROXY_EXPORT
 char **px_proxy_factory_get_proxies (pxProxyFactory *self, const char *url);
 
 /**
@@ -127,6 +132,7 @@ char **px_proxy_factory_get_proxies (pxProxyFactory *self, const char *url);
  *
  * @since 0.4.16
  */
+LIBPROXY_EXPORT
 void px_proxy_factory_free_proxies (char **proxies);
 
 /**
@@ -135,6 +141,7 @@ void px_proxy_factory_free_proxies (char **proxies);
  *
  * Frees the `pxProxyFactory`.
  */
+LIBPROXY_EXPORT
 void px_proxy_factory_free (pxProxyFactory *self);
 
 #ifdef __cplusplus

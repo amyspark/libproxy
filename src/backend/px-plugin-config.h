@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib-object.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_TYPE_CONFIG (px_config_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_INTERFACE (PxConfig, px_config, PX, CONFIG, GObject)
 
 enum {

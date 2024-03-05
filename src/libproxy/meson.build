@@ -10,6 +10,14 @@ libproxy_headers = [
   'proxy.h',
 ]
 
+libproxy_visibility_header = configure_file(
+  input: visibility_h,
+  output: 'visibility.h',
+  configuration: {
+    'TARGET': 'libproxy'.to_upper(),
+  }
+)
+
 libproxy_deps = [
   px_backend_dep,
 ]
@@ -23,7 +31,8 @@ endif
 
 libproxy = shared_library(
   'proxy',
-  libproxy_sources,
+  [libproxy_sources, libproxy_visibility_header],
+  c_args: ['-DLIBPROXY_EXPORTS'],
   include_directories: px_backend_inc,
   dependencies: libproxy_deps,
   link_args : vflag,
@@ -32,6 +41,7 @@ libproxy = shared_library(
   version: meson.project_version(),
   install: true,
   install_rpath: pkglibdir,
+  gnu_symbol_visibility: 'inlineshidden',
 )
 
 libproxy_dep = declare_dependency (
@@ -40,7 +50,7 @@ libproxy_dep = declare_dependency (
   dependencies: libproxy_deps
 )
 
-install_headers(libproxy_headers, subdir: 'libproxy')
+install_headers([libproxy_headers, libproxy_visibility_header], subdir: 'libproxy')
 
 pkg = import('pkgconfig')
 pkg.generate(

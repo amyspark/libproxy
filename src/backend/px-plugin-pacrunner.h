@@ -22,11 +22,13 @@
 #pragma once
 
 #include <glib-object.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
 #define PX_TYPE_PACRUNNER (px_pacrunner_get_type ())
 
+PXMANAGER_EXPORT
 G_DECLARE_INTERFACE (PxPacRunner, px_pacrunner, PX, PAC_RUNNER, GObject)
 
 struct _PxPacRunnerInterface

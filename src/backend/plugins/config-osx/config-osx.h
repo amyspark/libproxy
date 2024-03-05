@@ -22,6 +22,7 @@
 #pragma once
 
 #include <glib.h>
+#include "px-manager-visibility.h"
 
 G_BEGIN_DECLS
 
