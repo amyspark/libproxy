@@ -93,6 +93,9 @@ _platforms = []
 host_system = host_machine.system()
 if host_machine.system() == 'windows'
     _platforms = ['windows']
+    if cc.get_id() == 'msvc'
+      error('libproxy on Visual Studio requires Clang or clang-cl')
+    endif
 endif
 with_platform_windows = _platforms.contains('windows')
 with_platform_darwin = ['darwin', 'ios'].contains(host_system)
